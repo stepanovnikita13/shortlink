@@ -1,38 +1,27 @@
 import { Paper, TableCell, TableContainer, TableRow, TableFooter, Link, Tooltip } from '@mui/material'
 import { useMediaQuery } from '@mui/material'
 import device from '../../../styles/device'
-import { ILinkStatistics } from '../../../types/types'
+import { ILinkStatistics, TOrderBy, TOrderType } from '../../../types/types'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import * as S from './TableStats.styled'
 import React from 'react'
-
-export interface IEnhancedTableHead {
-
-}
-const EnhancedTableHead: React.FC<IEnhancedTableHead> = (props) => {
-	return (
-		<S.TableHead>
-			<TableRow>
-				<TableCell width='100%' >TARGET</TableCell>
-				<TableCell width='100px' >SHORT</TableCell>
-				<TableCell width='100px' >COUNT</TableCell>
-			</TableRow>
-		</S.TableHead>
-	)
-}
+import EnhancedTableHead from './EnhancedTebleHead/EnhancedTebleHead'
 
 export interface ITableStatsProps {
 	rows: Array<ILinkStatistics | null>
-	page: number,
-	rowsPerPage: number,
-	totalCount: number,
+	page: number
+	rowsPerPage: number
+	totalCount: number
+	orderType: TOrderType
+	orderBy: TOrderBy
 	onPageChange: (e: React.MouseEvent<HTMLButtonElement> | null, page: number) => void
 	onRowsPerPageChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 	onCopy?: () => void
+	onSortRequest: (e: React.MouseEvent<unknown>, value: TOrderBy) => void
 }
 
 const TableStats: React.FC<ITableStatsProps> = React.memo((props) => {
-	const { rows, page, totalCount, rowsPerPage, onPageChange, onRowsPerPageChange, onCopy } = props
+	const { rows, page, totalCount, rowsPerPage, onPageChange, orderType, orderBy, onRowsPerPageChange, onCopy, onSortRequest } = props
 	const isMobile = !useMediaQuery(device.tabletS)
 
 	return (
@@ -42,7 +31,11 @@ const TableStats: React.FC<ITableStatsProps> = React.memo((props) => {
 				sx={{ paddingInline: isMobile ? '2px' : 0 }}
 			>
 				<S.Table size='small'>
-					<EnhancedTableHead />
+					<EnhancedTableHead
+						orderType={orderType}
+						orderBy={orderBy}
+						onRequestSort={onSortRequest}
+					/>
 					<S.TableBody>
 						{rows.map(row => (
 							<CopyToClipboard

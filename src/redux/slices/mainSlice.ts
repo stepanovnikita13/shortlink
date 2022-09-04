@@ -6,6 +6,7 @@ export const initialState = {
 	statistics: [] as Array<ILinkStatistics | null>,
 	currentPage: 0,
 	pageSize: 10,
+	order: 'asc_target' as TOrder,
 	totalCount: -1 as number,
 	isFetching: false,
 	error: null as string | null
@@ -23,7 +24,10 @@ export const mainSlice = createSlice({
 		},
 		setIsFetching: (state, action: PayloadAction<boolean>) => {
 			state.isFetching = action.payload
-		}
+		},
+		setOrder: (state, action: PayloadAction<TOrder>) => {
+			state.order = action.payload
+		},
 	},
 	extraReducers: builder => {
 		builder
@@ -65,6 +69,6 @@ export const getTotalCount = createAsyncThunk(
 	}
 )
 
-export const { setCurrentPage, setPageSize, setIsFetching } = mainSlice.actions
+export const { setCurrentPage, setPageSize, setIsFetching, setOrder } = mainSlice.actions
 
 export default mainSlice.reducer
