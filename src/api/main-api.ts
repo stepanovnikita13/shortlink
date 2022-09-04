@@ -3,7 +3,7 @@ import { catchAxios, instance } from "./api"
 import { IStatisticsData } from "./api-types"
 
 export const mainAPI = {
-	async getStatistics(offset: number, limit: number, order: TOrder = 'asc_target') {
+	async getStatistics(offset: number = 0, limit: number = 0, order: TOrder = 'asc_target') {
 		try {
 			const res = await instance.get<IStatisticsData>(`statistics?order=${order}&offset=${offset}&limit=${limit}`)
 			return res
