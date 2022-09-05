@@ -3,7 +3,7 @@ import { mainAPI } from "../../api/main-api";
 import { ILinkStatistics, TOrder } from "../../types/types";
 
 export const initialState = {
-	statistics: [] as Array<ILinkStatistics | null>,
+	statistics: [] as Array<ILinkStatistics>,
 	currentPage: 0,
 	pageSize: 10,
 	order: 'asc_target' as TOrder,

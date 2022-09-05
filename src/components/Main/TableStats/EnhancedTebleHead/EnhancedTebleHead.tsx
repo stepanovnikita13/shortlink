@@ -11,26 +11,22 @@ export interface IHeadCell {
 	id: keyof IHeadCellData
 	numeric: boolean
 	label: string
-	width: string
 }
 const headCells: readonly IHeadCell[] = [
 	{
 		id: 'target',
 		numeric: false,
 		label: 'TARGET',
-		width: '100%',
 	},
 	{
 		id: 'short',
 		numeric: false,
 		label: 'SHORT',
-		width: '100px',
 	},
 	{
 		id: 'counter',
 		numeric: true,
 		label: 'COUNTER',
-		width: '110px',
 	}
 ]
 export interface IEnhancedTableHead {
@@ -51,7 +47,6 @@ const EnhancedTableHead: React.FC<IEnhancedTableHead> = (props) => {
 				{headCells.map((headCell, index) => (
 					<TableCell
 						key={index}
-						width={headCell.width}
 					>
 						<TableSortLabel
 							active={orderBy === headCell.id}

@@ -1,4 +1,5 @@
-import { Paper, TableCell, TableContainer, TableRow, TableFooter, Link, Tooltip } from '@mui/material'
+import { Paper, TableCell, TableContainer, TableRow, TableFooter, Link } from '@mui/material'
+
 import { useMediaQuery } from '@mui/material'
 import device from '../../../styles/device'
 import { ILinkStatistics, TOrderBy, TOrderType } from '../../../types/types'
@@ -6,6 +7,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import * as S from './TableStats.styled'
 import React from 'react'
 import EnhancedTableHead from './EnhancedTebleHead/EnhancedTebleHead'
+import TableToolbar from './TableToolbar/TableToolbar'
 
 export interface ITableStatsProps {
 	rows: Array<ILinkStatistics | null>
@@ -30,6 +32,7 @@ const TableStats: React.FC<ITableStatsProps> = React.memo((props) => {
 				component={isMobile ? 'div' : Paper}
 				sx={{ paddingInline: isMobile ? '2px' : 0 }}
 			>
+				<TableToolbar />
 				<S.Table size='small'>
 					<EnhancedTableHead
 						orderType={orderType}
@@ -43,25 +46,23 @@ const TableStats: React.FC<ITableStatsProps> = React.memo((props) => {
 								text={row?.short as string}
 								onCopy={onCopy}
 							>
-								<Tooltip title='Click to copy' enterDelay={1500} >
-									<TableRow
-										hover
-										sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-									>
-										<TableCell sx={{ wordWrap: 'break-word' }} component='th'>
-											{isMobile && <S.RowHeading>TARGET</S.RowHeading>}
-											<S.RowContent><Link target='_blank' href={row?.target} >{row?.target}</Link></S.RowContent>
-										</TableCell>
-										<TableCell >
-											{isMobile && <S.RowHeading>SHORT</S.RowHeading>}
-											<S.RowContent >{row?.short}</S.RowContent>
-										</TableCell>
-										<TableCell >
-											{isMobile && <S.RowHeading>COUNTER</S.RowHeading>}
-											<S.RowContent>{row?.counter}</S.RowContent>
-										</TableCell>
-									</TableRow>
-								</Tooltip>
+								<TableRow
+									hover
+									sx={{ '&:last-child td, &:last-child th': { border: 0 }, '&:hover': { cursor: 'pointer' } }}
+								>
+									<TableCell sx={{ wordWrap: 'break-word' }} component='th'>
+										{isMobile && <S.RowHeading>TARGET</S.RowHeading>}
+										<S.RowContent><Link target='_blank' href={row?.target} >{row?.target}</Link></S.RowContent>
+									</TableCell>
+									<TableCell >
+										{isMobile && <S.RowHeading>SHORT</S.RowHeading>}
+										<S.RowContent ><Link target='_blank' href={`http://79.143.31.216/s/${row?.short}`} >{row?.short}</Link></S.RowContent>
+									</TableCell>
+									<TableCell >
+										{isMobile && <S.RowHeading>COUNTER</S.RowHeading>}
+										<S.RowContent>{row?.counter}</S.RowContent>
+									</TableCell>
+								</TableRow>
 							</CopyToClipboard>
 						))}
 					</S.TableBody>

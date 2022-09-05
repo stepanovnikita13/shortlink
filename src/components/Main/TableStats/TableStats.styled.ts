@@ -2,7 +2,7 @@ import {
 	Table as TableMUI,
 	TableHead as TableHeadMUI,
 	TableBody as TableBodyMUI,
-	TablePagination as TablePaginationMUI
+	TablePagination as TablePaginationMUI,
 } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import device from '../../../styles/device'
@@ -43,9 +43,23 @@ export const TableBody = styled(TableBodyMUI)({
 })
 
 export const TableHead = styled(TableHeadMUI)({
-	display: 'none',
+	'& > tr': {
+		display: 'inline-flex',
+		'& > th': {
+			padding: 0
+		}
+	},
 	[`@media ${device.tabletS}`]: {
-		display: 'table-header-group'
+		'& > tr': {
+			display: 'table-row',
+			'& > th': {
+				padding: '6px 16px',
+				width: 110,
+				'&:first-of-type': {
+					width: '100%'
+				}
+			}
+		},
 	}
 })
 

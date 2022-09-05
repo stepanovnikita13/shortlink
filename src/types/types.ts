@@ -11,7 +11,7 @@ export interface ILinkStatistics {
 }
 
 export type TOrder = 'asc_short' | 'asc_target' | 'asc_counter' |
-	'desc' | 'desc_target' | 'desc_counter'
+	'desc_short' | 'desc_target' | 'desc_counter'
 
 export type TOrderType = 'asc' | 'desc'
 
