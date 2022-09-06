@@ -22,7 +22,7 @@ const TableStatsContainer: React.FC<ITableStatsContainerProps> = (props) => {
 	const sortingRows = useMemo(() => {
 		function getComparator(orderType: TOrderType, orderBy: TOrderBy):
 			(a: ILinkStatistics, b: ILinkStatistics) => number {
-			return orderType === 'desc'
+			return orderType === 'asc'
 				? (a, b) => compare(a, b, orderBy)
 				: (a, b) => -compare(a, b, orderBy)
 		}

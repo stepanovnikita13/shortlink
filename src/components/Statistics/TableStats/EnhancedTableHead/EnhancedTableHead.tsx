@@ -9,23 +9,19 @@ export interface IHeadCellData {
 }
 export interface IHeadCell {
 	id: keyof IHeadCellData
-	numeric: boolean
 	label: string
 }
 const headCells: readonly IHeadCell[] = [
 	{
 		id: 'target',
-		numeric: false,
 		label: 'TARGET',
 	},
 	{
 		id: 'short',
-		numeric: false,
 		label: 'SHORT',
 	},
 	{
 		id: 'counter',
-		numeric: true,
 		label: 'COUNTER',
 	}
 ]

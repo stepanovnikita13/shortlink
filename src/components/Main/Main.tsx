@@ -11,7 +11,7 @@ export interface IMainProps {
 
 const Main: React.FC<IMainProps> = (props) => {
 	const { onCopy } = props
-	const { shortLink, targetLink } = useSelector(state => state.main)
+	const shortLink = useSelector(state => state.main.shortLink)
 	const dispatch = useDispatch()
 
 	const handlerSubmit: SubmitHandler<TFormData> = data => dispatch(getShortLink(data.targetLink))
@@ -23,18 +23,13 @@ const Main: React.FC<IMainProps> = (props) => {
 			<SqueezeForm onSubmit={handlerSubmit} />
 
 			{shortLink && <>
-				<CopyToClipboard text={`http://79.143.31.216/s/${shortLink}`} onCopy={onCopy} >
-					<Typography textAlign='center'>
+				<Typography my={2} textAlign='center' sx={{ overflowWrap: 'break-word' }}>
+					<CopyToClipboard text={`http://79.143.31.216/s/${shortLink}`} onCopy={onCopy} >
 						<Link sx={{ cursor: 'pointer' }} >
 							{`http://79.143.31.216/s/${shortLink}`}
 						</Link>
-					</Typography>
-				</CopyToClipboard>
-				<Typography textAlign='center'>
-					{'(click to copy)'}
-				</Typography>
-				<Typography textAlign='center' variant='caption' sx={{ wordBreak: 'break-all' }}>
-					{targetLink}
+					</CopyToClipboard>
+					<Typography component='span' sx={{ whiteSpace: 'nowrap' }} >{'(click to copy)'}</Typography>
 				</Typography>
 			</>}
 		</div>
