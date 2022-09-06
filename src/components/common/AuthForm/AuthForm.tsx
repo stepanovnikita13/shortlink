@@ -1,10 +1,11 @@
 import { Button, TextField, Typography } from "@mui/material"
-import { SubmitHandler, useForm } from "react-hook-form"
+import { DefaultValues, SubmitHandler, useForm } from "react-hook-form"
 import { NavLink } from "../Link/Link"
 
 export interface IAuthFormProps {
 	type: 'register' | 'login'
 	onSubmit: SubmitHandler<FormInputs>
+	defaultValues?: DefaultValues<FormInputs>
 }
 
 export type FormInputs = {
@@ -18,13 +19,9 @@ const content = {
 }
 
 const AuthForm: React.FC<IAuthFormProps> = (props) => {
-	const { type, onSubmit } = props
-
+	const { type, onSubmit, defaultValues } = props
 	const { register, handleSubmit } = useForm<FormInputs>({
-		defaultValues: {
-			username: '',
-			password: ''
-		}
+		defaultValues
 	})
 
 	return (

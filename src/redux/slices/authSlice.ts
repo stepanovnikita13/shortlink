@@ -5,7 +5,7 @@ import { authAPI } from "../../api/auth-api"
 const initialState = {
 	isAuth: false,
 	initialized: false,
-	username: null as string | null,
+	username: undefined as string | undefined,
 	error: null as string | null | unknown
 }
 

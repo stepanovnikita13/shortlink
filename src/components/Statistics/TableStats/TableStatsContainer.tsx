@@ -32,7 +32,7 @@ const TableStatsContainer: React.FC<ITableStatsContainerProps> = (props) => {
 
 	useEffect(() => {
 		dispatch(requestStats({ currentPage, pageSize, order }))
-	}, [dispatch, currentPage, pageSize, order, statistics])
+	}, [dispatch, currentPage, pageSize, order])
 
 	useEffect(() => {
 		if (isMobile) scrollToTop()

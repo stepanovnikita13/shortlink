@@ -12,7 +12,7 @@ export interface ILoginProps {
 
 const Login: React.FC<ILoginProps> = (props) => {
 	const dispatch = useDispatch()
-	const isAuth = useSelector(state => state.auth.isAuth)
+	const { isAuth, username } = useSelector(state => state.auth)
 	const navigate = useNavigate()
 
 	useEffect(() => {
@@ -29,6 +29,7 @@ const Login: React.FC<ILoginProps> = (props) => {
 			<AuthForm
 				type='login'
 				onSubmit={onSubmit}
+				defaultValues={{ username, password: '' }}
 			/>
 		</Container>
 	)

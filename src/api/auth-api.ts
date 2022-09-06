@@ -4,7 +4,7 @@ import { ILoginData, IRegisterData } from "./api-types"
 export const authAPI = {
 	async register(username: string, password: string) {
 		try {
-			const res = await instance.post<IRegisterData>('register', new URLSearchParams({ username, password }))
+			const res = await instance.post<IRegisterData>(`register?username=${username}&password=${password}`)
 			return res
 		} catch (err) {
 			const errData = catchAxios<IRegisterData>(err)
