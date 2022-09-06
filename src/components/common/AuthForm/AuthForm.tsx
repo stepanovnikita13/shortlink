@@ -39,6 +39,7 @@ const AuthForm: React.FC<IAuthFormProps> = (props) => {
 					label='Username'
 					fullWidth
 					margin='dense'
+					autoComplete='username'
 					{...register('username')}
 				/>
 				<TextField
@@ -48,6 +49,7 @@ const AuthForm: React.FC<IAuthFormProps> = (props) => {
 					type='password'
 					fullWidth
 					margin='dense'
+					autoComplete='current-password'
 					{...register('password')}
 				/>
 				<Button

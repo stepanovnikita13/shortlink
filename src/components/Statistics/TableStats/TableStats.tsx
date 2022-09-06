@@ -6,7 +6,7 @@ import { ILinkStatistics, TOrderBy, TOrderType } from '../../../types/types'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import * as S from './TableStats.styled'
 import React from 'react'
-import EnhancedTableHead from './EnhancedTebleHead/EnhancedTebleHead'
+import EnhancedTableHead from './EnhancedTableHead/EnhancedTableHead'
 import TableToolbar from './TableToolbar/TableToolbar'
 
 export interface ITableStatsProps {
@@ -43,7 +43,7 @@ const TableStats: React.FC<ITableStatsProps> = React.memo((props) => {
 						{rows.map(row => (
 							<CopyToClipboard
 								key={row?.id}
-								text={row?.short as string}
+								text={`http://79.143.31.216/s/${row?.short}`}
 								onCopy={onCopy}
 							>
 								<TableRow

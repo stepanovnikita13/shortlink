@@ -1,11 +1,10 @@
-import { TOrder } from "../types/types"
+import { ILinkStatistics } from "../types/types"
 import { catchAxios, instance } from "./api"
-import { IStatisticsData } from "./api-types"
 
 export const mainAPI = {
-	async getStatistics(offset: number = 0, limit: number = 0, order: TOrder = 'asc_target') {
+	async squeeze(link: string) {
 		try {
-			const res = await instance.get<IStatisticsData>(`statistics?order=${order}&offset=${offset}&limit=${limit}`)
+			const res = await instance.post<ILinkStatistics>(`squeeze?link=${link}`)
 			return res
 		} catch (err) {
 			const errData = catchAxios(err)

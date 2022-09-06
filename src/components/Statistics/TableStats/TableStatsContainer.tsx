@@ -1,10 +1,8 @@
-import { forwardRef, useEffect, useState, useCallback, useMemo } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from '../../../hooks/hooks'
-import { requestStats, setCurrentPage, setPageSize } from '../../../redux/slices/mainSlice'
+import { requestStats, setCurrentPage, setPageSize } from '../../../redux/slices/statsSlice'
 import TableStats from './TableStats'
-import Snackbar from '@mui/material/Snackbar'
-import LinearProgress from '@mui/material/LinearProgress'
-import MuiAlert, { AlertProps } from '@mui/material/Alert'
+import { Alert, LinearProgress, Snackbar } from '@mui/material'
 import { useMediaQuery } from '@mui/material'
 import { scrollToTop } from '../../../utils/helpers'
 import device from '../../../styles/device'
@@ -13,12 +11,8 @@ import { ILinkStatistics, TOrderBy, TOrderType } from '../../../types/types'
 export interface ITableStatsContainerProps {
 }
 
-const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
-	<MuiAlert ref={ref} variant='filled' elevation={6} {...props} />
-))
-
 const TableStatsContainer: React.FC<ITableStatsContainerProps> = (props) => {
-	const { currentPage, pageSize, statistics, totalCount, isFetching, order } = useSelector(state => state.main)
+	const { currentPage, pageSize, statistics, totalCount, isFetching, order } = useSelector(state => state.stats)
 	const dispatch = useDispatch()
 	const isMobile = !useMediaQuery(device.tabletS)
 	const [isSnackBarOpen, setOpenSnackBar] = useState<boolean>(false)
@@ -38,7 +32,8 @@ const TableStatsContainer: React.FC<ITableStatsContainerProps> = (props) => {
 
 	useEffect(() => {
 		dispatch(requestStats({ currentPage, pageSize, order }))
-	}, [dispatch, currentPage, pageSize, order])
+	}, [dispatch, currentPage, pageSize, order, statistics])
+
 	useEffect(() => {
 		if (isMobile) scrollToTop()
 	}, [currentPage, isMobile])

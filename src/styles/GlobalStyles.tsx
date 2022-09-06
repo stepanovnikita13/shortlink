@@ -1,4 +1,4 @@
-import { GlobalStyles as Styles } from '@mui/material';
+import { GlobalStyles as Styles } from '@mui/material'
 
 export interface IGlobalStylesProps {
 }
@@ -10,7 +10,7 @@ const GlobalStyles: React.FC<IGlobalStylesProps> = () => {
 				margin: 0,
 				fontFamily: `Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 			  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-			  sansSeri: 'f'`,
+			  sansSerif`,
 				WebkitFontSmoothing: 'antialiased',
 				MozOsxFontSmoothing: 'grayscale',
 			},

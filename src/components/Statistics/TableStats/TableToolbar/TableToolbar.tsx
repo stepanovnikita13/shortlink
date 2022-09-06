@@ -5,7 +5,7 @@ import device from '../../../../styles/device'
 import { TOrder, TOrderType } from '../../../../types/types'
 import { useState } from 'react'
 import { useDispatch } from '../../../../hooks/hooks'
-import { setOrder } from '../../../../redux/slices/mainSlice'
+import { setOrder } from '../../../../redux/slices/statsSlice'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 
 export type IMenuOption = {
