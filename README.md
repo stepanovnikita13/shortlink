@@ -114,6 +114,10 @@ In order to get a link, you need to follow these simple steps:
 2. Click the _'squeeze'_ button
 3. Click on the generated link to copy it
 
+<img src="images/main-page.jpg" alt="Main page" width="400" />
+<br />
+<br />
+
 Also in the application it is possible to view statistics on the created links. In order to gain access, you must log in to your personal account. 
 To do this, go to the authorization page _(сlick on the "login" link in the upper left corner)_. If you do not have an account, you will be prompted to register.
 
@@ -124,6 +128,10 @@ After successful authorization, you will have access to view statistics _(сlick
   <li>Counter - shows how many times a short link was clicked</li>
 </ul>
 
+<img src="images/statistics.jpg" width="400" />
+<br />
+<br />
+
 The table can be sorted as a whole, on the server side, or only the visible part for easier viewing. 
 To sort the <b>entire table</b>, _click on the button in the upper right corner of the table_. 
 To sort only the <b>visible part</b> of the table, _click on the column names_
@@ -132,6 +140,7 @@ When you _click on a line, a short link will be copied_.
 
 Good luck! :smile:
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contact
 
